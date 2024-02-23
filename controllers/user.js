@@ -13,7 +13,7 @@ export const login = async (req, res, next) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch) return next(new ErrorHandler(404, "Invalid Credentials"));
     sendCookie(user, res, `Welcome Back, ${user.name}`, 200);
-    } catch (error) {
+    } catch (error) {       
         next(error);
     }
     
